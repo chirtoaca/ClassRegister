@@ -3,13 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ClassRegister.Core.Interfaces;
 
 namespace ClassRegister.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IExampleService _exampleService;
+
+        public HomeController(IExampleService exampleService)
+        {
+            _exampleService = exampleService;
+        }
+
         public ActionResult Index()
         {
+            _exampleService.GetDateTime();
             return View();
         }
 
